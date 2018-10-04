@@ -74,18 +74,18 @@
     (unless (or (use-region-p) ; silly with active reion
                 (window-minibuffer-p (selected-window))) ; silly in minibuffer
       (unless hl-sexp-overlay
-	(setq hl-sexp-overlay (make-overlay 1 1)) ; to be moved
-	(overlay-put hl-sexp-overlay 'face 'hl-sexp-face))
+        (setq hl-sexp-overlay (make-overlay 1 1)) ; to be moved
+        (overlay-put hl-sexp-overlay 'face 'hl-sexp-face))
       (overlay-put hl-sexp-overlay 'window (selected-window))
       (save-excursion
         (condition-case nil
             (backward-up-list 1)
           (error nil))
         (let ((bounds (bounds-of-thing-at-point 'sexp)))
-        (when bounds
-          (move-overlay hl-sexp-overlay
-                        (car bounds) (cdr bounds)
-                        (current-buffer))))))))
+          (when bounds
+            (move-overlay hl-sexp-overlay
+                          (car bounds) (cdr bounds)
+                          (current-buffer))))))))
 
 (defun hl-sexp-unhighlight ()
   "Deactivate the Hl-Sexp overlay on the current sexp in the current window."
@@ -101,8 +101,8 @@ Uses functions `hl-sexp-unhighlight' and `hl-sexp-highlight' on
   nil nil nil
   (if hl-sexp-mode
       (progn
-	(add-hook 'pre-command-hook #'hl-sexp-unhighlight)
-	(add-hook 'post-command-hook #'hl-sexp-highlight))
+        (add-hook 'pre-command-hook #'hl-sexp-unhighlight)
+        (add-hook 'post-command-hook #'hl-sexp-highlight))
     (hl-sexp-unhighlight)
     (remove-hook 'pre-command-hook #'hl-sexp-unhighlight)
     (remove-hook 'post-command-hook #'hl-sexp-highlight)))
