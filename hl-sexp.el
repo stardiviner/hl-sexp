@@ -108,9 +108,8 @@ Uses functions `hl-sexp-unhighlight' and `hl-sexp-highlight' on
     (remove-hook 'post-command-hook #'hl-sexp-highlight)))
 
 ;;;###autoload
-(easy-mmode-define-global-mode
- global-hl-sexp-mode hl-sexp-mode hl-sexp-mode
- :group 'hl-sexp)
+(define-global-minor-mode global-hl-sexp-mode hl-sexp-mode hl-sexp-mode
+  :group 'hl-sexp)
 
 (provide 'hl-sexp)
 
